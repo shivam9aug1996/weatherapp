@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+{{>header}}
+</head>
+<body>
+{{>navbar}}
+<div class="container">
+
+<h2>Register</h2>
+
+<form action="/register" method="POST" onsubmit="return validateForm()">
+  <div class="imgcontainer">
+    <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container" >
+    <label for="fname"><b>First Name</b></label>
+    <input type="text" placeholder="Enter First Name" name="fname" id="fname1" required  >
+    <span id = "blankMsg" style="color:red"> </span> <br><br> 
+
+    <label for="lname"><b>Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name" name="lname" id="lname1" required onclick="myFunction()">
+    <span id = "charMsg" style="color:red"> </span> <br><br> 
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email1" required>
+      <span id = "emailMsg" style="color:red"> </span> <br><br>  
+
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id ="psw1" required>
+    <span id = "message1" style="color:red"> </span> <br><br>  
+
+
+    <label for="cpsw"><b>Confirm Password</b></label>
+    <input type="password" placeholder="Enter Password" name="cpsw" id="cpsw1" required> 
+    <span id = "message2" style="color:red"> </span> <br><br>  
+ 
+
+    <button type="submit">Register</button>
+   
+  </div>
+
+  
+   
+  </div>
+</form>
+</div>
+
+<script>
+
+
+function validateForm() {
+    //collect form data in JavaScript variables
+    var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var email = document.getElementById("email1").value;
+    var pw1 = document.getElementById("psw1").value;
+    var pw2 = document.getElementById("cpsw1").value;
+    var name1 = document.getElementById("fname1").value;
+	var name2 = document.getElementById("lname1").value;
+    
+    //check empty first name field
+    if(name1 == "") {
+      document.getElementById("blankMsg").innerHTML = "**Fill the first name";
+      return false;
+    }
+    
+    //character data validation
+    if(!isNaN(name1)){
+      document.getElementById("blankMsg").innerHTML = "**Only characters are allowed";
+      return false;
+    }else{
+      document.getElementById("blankMsg").innerHTML = "";
+    }
+   
+
+   //character data validation
+    if(!isNaN(name2)){
+      document.getElementById("charMsg").innerHTML = "**Only characters are allowed";
+      return false;
+    } else{
+      document.getElementById("charMsg").innerHTML = "";
+    }
+
+    if(!(email.match(mailformat))){
+      document.getElementById("emailMsg").innerHTML = "**Email is not valid";
+      return false;
+      }else{
+      document.getElementById("emailMsg").innerHTML = "";
+    }
+  
+    //check empty password field
+    if(pw1 == "") {
+      document.getElementById("message1").innerHTML = "**Fill the password please!";
+      return false;
+    }
+  
+    //check empty confirm password field
+    if(pw2 == "") {
+      document.getElementById("message2").innerHTML = "**Enter the password please!";
+      return false;
+    } 
+   
+    //minimum password length validation
+    if(pw1.length < 8) {
+      document.getElementById("message1").innerHTML = "**Password length must be atleast 8 characters";
+      return false;
+    }else{
+      document.getElementById("message1").innerHTML = "";
+    }
+
+    //maximum length of password validation
+    if(pw1.length > 15) {
+      document.getElementById("message1").innerHTML = "**Password length must not exceed 15 characters";
+      return false;
+    }else{
+      document.getElementById("message1").innerHTML = "";
+    }
+  
+    if(pw1 != pw2) {
+      document.getElementById("message2").innerHTML = "**Passwords are not same";
+      return false;
+    } else{
+      document.getElementById("message2").innerHTML = "";
+    }
+ }
+</script>
+
+</body>
+</html>
