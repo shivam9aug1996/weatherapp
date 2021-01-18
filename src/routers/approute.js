@@ -26,7 +26,7 @@ router.post("/register", async (req,res)=>{
                 Useralreadyexists : "User Already Exists !"
             });
         }
-            else{
+             else{
                 const registerEmployee = new Register({
                     firstname : req.body.fname,
                     lastname : req.body.lname,
@@ -34,7 +34,9 @@ router.post("/register", async (req,res)=>{
                     password :  req.body.psw
                 })
                     const registered= await  registerEmployee.save();
+                   
                     res.status(201).render("login");
+                   
             }
        
                
