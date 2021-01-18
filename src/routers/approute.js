@@ -2,6 +2,7 @@
 const express = require("express");
 const router = new express.Router();
 const Register = require("../models/register")
+const fetch = require('node-fetch');
 
 
 
@@ -9,9 +10,10 @@ router.get("",(req,res)=>{
     res.render("index");
 })
 
-router.get("/weather",(req,res)=>{
+ router.get("/weather",(req,res)=>{
     res.render("weather");
-})
+ })
+
 
 router.get("/login",(req,res)=>{
     res.render("login");
@@ -20,6 +22,7 @@ router.get("/login",(req,res)=>{
 router.get("/register",(req,res)=>{
     res.render("register");
 })
+
 
 router.post("/register", async (req,res)=>{
     try{
@@ -78,29 +81,32 @@ router.post("/login", async (req,res)=>{
     }
 })
 
-router.post("/weather", async (req,res)=>{
-    try{
-        
+router.post("/weather",  (req,res)=>{
+   
+       
         
             fname = req.body.fname;
-           
-            let url = `http://api.openweathermap.org/data/2.5/weather?q=${fname}&units=metric&appid=b14425a6554d189a2d7dc18a8e7d7263`
+            fetch(`http://api.openweathermap.org/data/2.5/weather?q=${fname}&units=metric&appid=b14425a6554d189a2d7dc18a8e7d7263`)
+            .then(res => res.json())
+            .then((json) => {
+                const arrData = [json];
+                const weatherDescription=arrData[0].weather[0].description;
+               const weather= weatherDescription.charAt(0).toUpperCase()+weatherDescription.substring(1);
+             
+               
+              res.render("weather1",{
+                LocationCountry:`${arrData[0].name}, ${arrData[0].sys.country}`,
+                temp: `${Math.round(arrData[0].main.temp)}°C , ${weather}`,
+                min:`Min ${Math.round(arrData[0].main.temp_min)} °C | Max ${Math.round(arrData[0].main.temp_max)} °C `
 
-            const response = await fetch(url);
+              })
+    
+            })
 
-            const data = await response.json();
-            const arrData = [data];
-            const weatherDescription=arrData[0].weather[0].description;
-           const weather= weatherDescription.charAt(0).toUpperCase()+weatherDescription.substring(1);
-           res.status(200).render("weather",{
-            LocationCountry : `${arrData[0].name}, ${arrData[0].sys.country}`,
-            temp : `${Math.round(arrData[0].main.temp)}°C , ${weather}`,
-            min :`Min ${Math.round(arrData[0].main.temp_min)} °C | Max ${Math.round(arrData[0].main.temp_max)} °C `
-           })
-    }
-    catch(e){
-        res.status(400).status(e);
-    }
-})
+        })
+
+        router.get("/weather1",(req,res)=>{
+            res.render("weather1");
+        })
 
 module.exports = router;
