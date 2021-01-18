@@ -60,4 +60,15 @@ span.psw {
   .cancelbtn {
      width: 100%;
   }
+  
+}
+
+@media 
+  (-webkit-min-device-pixel-ratio: 2), 
+  (min-resolution: 192dpi) { 
+    img.avatar {
+      width: 35%;
+      border-radius: 50%;
+      height: 10%;
+    }
 }

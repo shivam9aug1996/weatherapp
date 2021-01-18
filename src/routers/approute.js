@@ -28,12 +28,8 @@ router.post("/register", async (req,res)=>{
     try{
         const email1 = req.body.email;
         const usermail= await Register.findOne({email:email1})
-        if(email1===usermail.email){
-            res.status(400).render("login",{
-                Useralreadyexists : "User Already Exists !"
-            });
-        }
-             else{
+        
+             
                 const registerEmployee = new Register({
                     firstname : req.body.fname,
                     lastname : req.body.lname,
@@ -44,7 +40,7 @@ router.post("/register", async (req,res)=>{
                    
                     res.status(201).render("login");
                    
-            }
+            
        
                
     
@@ -53,7 +49,7 @@ router.post("/register", async (req,res)=>{
     catch(e){
        
         res.status(200).render("login",{
-            Useralreadyexists : "Email ID alreadyexists !"
+            Useralreadyexists : "Already exists an Account registered with this Email Address !"
         })
     }
 })
@@ -82,7 +78,7 @@ router.post("/login", async (req,res)=>{
        
     }
     catch(e){
-        res.status(200).render("login",{
+        res.status(404).render("login",{
             Useralreadyexists : "Couldn't find your Account !"
         })
     }
@@ -99,15 +95,17 @@ router.post("/weather",  (req,res)=>{
                 const arrData = [json];
                 const weatherDescription=arrData[0].weather[0].description;
                const weather= weatherDescription.charAt(0).toUpperCase()+weatherDescription.substring(1);
-             
+            
                
               res.render("weather",{
                 LocationCountry:`${arrData[0].name}, ${arrData[0].sys.country}`,
-                temp: `${Math.round(arrData[0].main.temp)}°C , ${weather}`,
-                min:`Min ${Math.round(arrData[0].main.temp_min)} °C | Max ${Math.round(arrData[0].main.temp_max)} °C `
+                temp: `${Math.round(arrData[0].main.temp)}°C | ${weather}`,
+                
 
               })
     
+            }).catch((e)=>{
+                res.status(404).render("weather");
             })
 
         })

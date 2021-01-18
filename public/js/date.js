@@ -46,11 +46,13 @@
         let mins = now.getMinutes();
 
         let periods = "AM";
-
+        
         if (hours > 11) {
           periods = "PM";
+         
           if (hours > 12) hours -= 12;
         }
+        if(hours==0) hours=12
         if (mins < 10) {
           mins = "0" + mins;
         }
