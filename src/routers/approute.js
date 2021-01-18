@@ -52,7 +52,9 @@ router.post("/register", async (req,res)=>{
     }
     catch(e){
        
-        res.status(400).send("error");
+        res.status(200).render("login",{
+            Useralreadyexists : "Email ID alreadyexists !"
+        })
     }
 })
 
@@ -70,20 +72,18 @@ router.post("/login", async (req,res)=>{
                     Login : usermail.firstname
                 })
             }
-            
-          
+
           else{
             res.status(200).render("login",{
-                Useralreadyexists : "Wrong Email or Password !"
+                Useralreadyexists : "Wrong Password !"
             })
           }
-         
           
        
     }
     catch(e){
         res.status(200).render("login",{
-            Useralreadyexists : "Wrong Email or Password !"
+            Useralreadyexists : "Couldn't find your Account !"
         })
     }
 })
