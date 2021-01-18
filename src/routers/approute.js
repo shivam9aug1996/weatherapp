@@ -94,7 +94,7 @@ router.post("/weather",  (req,res)=>{
                const weather= weatherDescription.charAt(0).toUpperCase()+weatherDescription.substring(1);
              
                
-              res.render("weather1",{
+              res.render("weather",{
                 LocationCountry:`${arrData[0].name}, ${arrData[0].sys.country}`,
                 temp: `${Math.round(arrData[0].main.temp)}°C , ${weather}`,
                 min:`Min ${Math.round(arrData[0].main.temp_min)} °C | Max ${Math.round(arrData[0].main.temp_max)} °C `
@@ -105,8 +105,8 @@ router.post("/weather",  (req,res)=>{
 
         })
 
-        router.get("/weather1",(req,res)=>{
+        /* router.get("/weather1",(req,res)=>{
             res.render("weather1");
-        })
+        }) */
 
 module.exports = router;
