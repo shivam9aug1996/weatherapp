@@ -1,0 +1,43 @@
+.center {
+  height: 200px;
+  position: relative;
+  
+}
+
+.center  {
+  width:500px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.center2  {
+  width:500px;
+  margin: 0;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 60px;
+  color:rgb(11, 12, 12);
+  text-shadow: 0 0 5px #967a7a, 0 0 3px #e0e0e6;
+  font-family: sans-serif;
+
+}
+
+body {
+  background-color: rgba(230, 220, 220, 0.603);
+  border-radius: 80px;
+  background-blend-mode: color-burn;
+}
+
+.bg
+{
+  background-color:rgb(27, 85, 85)
+}
+
+  .card-body{
+      padding: 5%;
+  }

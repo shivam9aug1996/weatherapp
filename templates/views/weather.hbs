@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   {{>header}}
+    <link rel="stylesheet" href="css/weather.css">
+  </head>
+  <body>
+   <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Welcome</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li class="active"><a href="/weather">Weather</a></li>
+     
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> {{Login}}</a></li>
+    </ul>
+  </div>
+</nav>
+
+ 
+    <h1 class="center2" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Weather App</h1>
+
+       <div class="container center"  >
+      
+      
+         <div class="card bg text-white " >
+         
+           <div class="card-body" style="color: seashell;">
+                 <h2 id="city_name">Location,Country</h2>
+            
+                <p id="date"></p>
+                <h4 id='temp_real_val'>&deg;C</h4>
+                <h4 id="min">
+                  Min &deg;C | Max &deg;C
+                </h4>
+            </div>
+        </div>
+        <br>
+        <br>
+       
+
+
+            <form style="margin-right: auto;margin-left: auto; border :teal;">
+              <div class="form-group">
+                <label for="fname">Enter City:</label>
+                <input type="text" class="form-control" id="cityName" name="fname" value="">
+              
+              </div>
+              
+              <input type="submit" value="Search" id="submitBtn">
+            </form>
+      </div>
+    
+
+    
+  
+ 
+   
+          
+      
+   
+     
+
+    
+ 
+        
+     
+
+<script src="js/date.js"></script>
+<script src="js/main.js"></script>
+
+       
+  
+  </body>
+</html>

@@ -9,6 +9,10 @@ router.get("",(req,res)=>{
     res.render("index");
 })
 
+router.get("/weather",(req,res)=>{
+    res.render("weather");
+})
+
 router.get("/login",(req,res)=>{
     res.render("login");
 })
@@ -57,7 +61,7 @@ router.post("/login", async (req,res)=>{
             password1 = req.body.psw
           const usermail= await Register.findOne({email:email1})
           if(password1===usermail.password){
-              res.status(200).render("welcomeuser",{
+              res.status(200).render("weather",{
                   User : usermail.firstname,
                   Login : usermail.firstname
               })
