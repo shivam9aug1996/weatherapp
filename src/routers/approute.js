@@ -63,17 +63,26 @@ router.post("/login", async (req,res)=>{
             email1 = req.body.email
             password1 = req.body.psw
           const usermail= await Register.findOne({email:email1})
-          if(password1===usermail.password){
-              res.status(200).render("weather",{
-                  User : usermail.firstname,
-                  Login : usermail.firstname
-              })
+          if(email1===usermail.email){
+            if(password1===usermail.password){
+                res.status(200).render("weather",{
+                    User : usermail.firstname,
+                    Login : usermail.firstname
+                })
+            }
+            else{
+                res.status(200).render("login",{
+                    Useralreadyexists : "Wrong Email or Password !"
+                })
+              }
           }
           else{
             res.status(200).render("login",{
                 Useralreadyexists : "Wrong Email or Password !"
             })
           }
+         
+          
        
     }
     catch(e){
@@ -105,8 +114,5 @@ router.post("/weather",  (req,res)=>{
 
         })
 
-        /* router.get("/weather1",(req,res)=>{
-            res.render("weather1");
-        }) */
 
 module.exports = router;
