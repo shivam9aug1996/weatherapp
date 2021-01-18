@@ -12,7 +12,6 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
-      <li class="active"><a href="/weather">Weather</a></li>
      
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -31,12 +30,12 @@
          <div class="card bg text-white " >
          
            <div class="card-body" style="color: seashell;">
-                 <h2 id="city_name">Location,Country</h2>
+                 <h2 id="city_name">{{LocationCountry}}</h2>
             
                 <p id="date"></p>
-                <h4 id='temp_real_val'>&deg;C</h4>
+                <h4 id='temp_real_val'>{{temp}}</h4>
                 <h4 id="min">
-                  Min &deg;C | Max &deg;C
+                  {{min}}
                 </h4>
             </div>
         </div>
@@ -45,7 +44,7 @@
        
 
 
-            <form style="margin-right: auto;margin-left: auto; border :teal;">
+            <form style="margin-right: auto;margin-left: auto; border :teal;" action="/weather" method="POST">
               <div class="form-group">
                 <label for="fname">Enter City:</label>
                 <input type="text" class="form-control" id="cityName" name="fname" value="">
