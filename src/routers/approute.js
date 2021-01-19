@@ -58,8 +58,8 @@ router.post("/login", async (req,res)=>{
     try{
         
         
-            email1 = req.body.email
-            password1 = req.body.psw
+           const email1 = req.body.email.toLowerCase()
+          const password1 = req.body.psw
           const usermail= await Register.findOne({email:email1})
           
             if(password1===usermail.password){
