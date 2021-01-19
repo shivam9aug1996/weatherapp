@@ -58,6 +58,8 @@ span.psw {
   position: absolute;
   right: 5%;
   top : 5%;
+  transition: all linear;
+  animation: rot 6s linear infinite;
 }
 
 .footer {
@@ -97,4 +99,13 @@ span.psw {
   
     }
     
+}
+
+@keyframes rot{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }
