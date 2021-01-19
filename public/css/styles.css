@@ -70,9 +70,7 @@ span.psw {
   text-align: center;
 }
 
-.foot{
-  margin-bottom: 4px;
-}
+
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
