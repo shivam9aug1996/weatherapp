@@ -26,7 +26,7 @@ router.get("/register",(req,res)=>{
 
 router.post("/register", async (req,res)=>{
     try{
-        const email1 = req.body.email;
+        const email1 = req.body.email.toLowerCase();
         const usermail= await Register.findOne({email:email1})
         
              
@@ -38,7 +38,9 @@ router.post("/register", async (req,res)=>{
                 })
                     const registered= await  registerEmployee.save();
                    
-                    res.status(201).render("login");
+                    res.status(201).render("login",{
+                        Useralreadyexists : "Registration Successfull"
+                    });
                    
             
        
@@ -64,7 +66,6 @@ router.post("/login", async (req,res)=>{
           
             if(password1===usermail.password){
                 res.status(200).render("weather",{
-                    User : usermail.firstname,
                     Login : usermail.firstname
                 })
             }

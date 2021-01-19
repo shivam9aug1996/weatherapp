@@ -51,6 +51,16 @@ span.psw {
   padding-top: 16px;
 }
 
+
+
+.sun{
+  width: 12%;
+  position: absolute;
+  right: 5%;
+  top : 5%;
+}
+
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
@@ -71,4 +81,9 @@ span.psw {
       border-radius: 50%;
       height: 10%;
     }
+    .sun{
+      width: 20%;
+  
+    }
+    
 }
