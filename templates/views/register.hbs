@@ -3,12 +3,21 @@
 <head>
 {{>header}}
 <script src="js/registervalidation.js"></script>
+ <style>
+        #logout{
+            display: none;
+        }
+        #logoutall{
+            display: none;
+        }
+       
+    </style>
 </head>
 <body>
 {{>navbar}}
 <div class="container">
 
-<h2>Register</h2>
+<h2>Sign Up</h2>
 
 <form action="/register" method="POST" onsubmit="return validateForm()">
   <div class="imgcontainer">
