@@ -20,14 +20,14 @@ const partialsPath = path.join(__dirname,"../templates/partials");
 
 var options = {
     etag: true,
-    //maxAge: 3600000, //in ms i.e 1 hr in this case
+   
     redirect: true,
     setHeaders: function (res, path, stat) {
-      //any other header in response
+    
       res.set({
           'x-timestamp': Date.now(),
           'joseph' : 'hi',
-          'Cache-Control' : 'public, max-age=60',
+          'Cache-Control' : 'public, max-age=120',
           'Expires' : new Date(Date.now() + 3600 ).toUTCString()
         });
     }
