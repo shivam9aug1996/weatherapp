@@ -1,6 +1,10 @@
 
 const express = require("express");
 const auth = require("../middleware/auth")
+const compression = require("compression");
+const app = express();
+app.use(compression());
+
 
 const router = new express.Router();
 const Register = require("../models/register")

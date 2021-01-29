@@ -2,7 +2,7 @@ require('dotenv').config()
 
 
 const express = require("express");
-
+const compression = require("compression");
 require("./db/conn");
 const path = require("path");
 const hbs = require("hbs");
@@ -10,7 +10,7 @@ const router = require("./routers/approute")
 const port = process.env.PORT || 3000;
 const cookieParser = require("cookie-parser");
 const app = express();
-
+app.use(compression());
 app.use(cookieParser());
  
 
