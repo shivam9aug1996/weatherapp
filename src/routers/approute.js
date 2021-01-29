@@ -51,7 +51,7 @@ router.get("", auth ,  (req,res)=>{
        
         res.clearCookie("jwt");
         await req.user.save();
-        res.render("login",{
+        res.status(302).render("login",{
             Useralreadyexists : "Logout Successfully !"
         });
     } catch (error) {
@@ -65,7 +65,7 @@ router.get("", auth ,  (req,res)=>{
        
         res.clearCookie("jwt");
         await req.user.save();
-        res.render("login",{
+        res.status(302).render("login",{
             Useralreadyexists : "Logout Successfully !"
         });
     } catch (error) {
@@ -150,7 +150,7 @@ router.post("/login", async (req,res)=>{
             }
 
           else{
-            res.status(200).render("login",{
+            res.status(401).render("login",{
                 Useralreadyexists : "Wrong Password !"
             })
           }
