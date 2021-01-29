@@ -27,7 +27,8 @@ var options = {
       res.set({
           'x-timestamp': Date.now(),
           'joseph' : 'hi',
-          'Cache-Control' : 'public, max-age=60'
+          'Cache-Control' : 'public, max-age=60',
+          'Expires' : new Date(Date.now() + 3600 ).toUTCString()
         });
     }
 }
