@@ -20,6 +20,7 @@
     
     <div class="jumbotron"  style="position: relative;background-color:#add8e6">
   <h1 class="display-4">Weather App<img class="weathericon"  src={{image}} ></h1><br>
+   
   <p class="lead">{{LocationCountry}}</p>
   <p class="lead" id="date"></p>
      <p class="lead">{{temp}} </p>          
@@ -35,8 +36,8 @@
                 <input type="text" class="form-control" id="cityName" name="fname" value="">
               
               </div>
-              
-              <input type="submit" value="Search" id="submitBtn">
+             
+              <input type="submit" value="Search" id="submitBtn" >
             </form>
   
 </div>
@@ -47,6 +48,28 @@
 {{>footer}}
 
 <script src="js/date.js"></script>
+<script>
+          (function(){
+        
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position){
+                
+                  $.get( `https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=202bbfd5e6eb492c9c883a9e8652fd07`, function(data) {
+                  
+                  const city=data.results[0].components.county;
+                 
+                 var c = document.getElementById("cityName");
+                 c.attributes[4].nodeValue=city;
+                  
+                  })
+                 
+                });
+                
+            }
+           
+          })();
+         
 
+  </script>
 </body>
 </html>

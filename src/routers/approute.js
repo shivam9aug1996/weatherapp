@@ -144,9 +144,7 @@ router.post("/login", async (req,res)=>{
             const y=fname.charAt(0).toUpperCase()+fname.substring(1);
             
             if(isMatch){
-                res.status(200).render("weather",{
-                    Login : y
-                })
+                res.status(200).render("weather")
             }
 
           else{
