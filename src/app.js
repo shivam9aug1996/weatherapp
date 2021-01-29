@@ -27,7 +27,7 @@ var options = {
       res.set({
           'x-timestamp': Date.now(),
           'joseph' : 'hi',
-          'Cache-Control' : (path.includes('css/styles.css')) ? 'no-store' : 'public, max-age=60'
+          'Cache-Control' : 'public, max-age=60'
         });
     }
 }
