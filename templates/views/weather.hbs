@@ -30,7 +30,7 @@
 
   
   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-   <form action="/weather" method="POST" style="margin-right: auto;margin-left: auto; border :teal;" >
+   <form id="myform"action="/weather" method="POST" style="margin-right: auto;margin-left: auto; border :teal;" >
               <div class="form-group">
                 <label for="fname">Enter City:</label>
                 <input type="text" class="form-control" id="cityName" name="fname" value="">
@@ -48,8 +48,8 @@
 {{>footer}}
 
 <script src="js/date.js"></script>
-<script>
-          (function(){
+{{!-- <script>
+      (function(){
         
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position){
@@ -67,9 +67,11 @@
                 
             }
            
+           
           })();
-         
 
-  </script>
+      
+
+  </script> --}}
 </body>
 </html>
