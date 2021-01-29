@@ -2,6 +2,9 @@
 const express = require("express");
 const auth = require("../middleware/auth")
 const compression = require("compression");
+
+
+
 const app = express();
 app.use(compression());
 
@@ -15,8 +18,20 @@ const jwt = require("jsonwebtoken")
 
 
 
-router.get("", auth , (req,res)=>{
+  
+  
+
+
+
+
+
+
+
+
+
+router.get("", auth ,  (req,res)=>{
     try {
+        
         res.render("weather")
     } catch (error) {
         res.render("index");

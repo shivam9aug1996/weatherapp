@@ -12,14 +12,36 @@ const cookieParser = require("cookie-parser");
 const app = express();
 app.use(compression());
 app.use(cookieParser());
- 
+
 
 const templatePath = path.join(__dirname,"../templates/views");
 const partialsPath = path.join(__dirname,"../templates/partials");
-app.use(express.static('public'));
+
+
+var options = {
+    etag: true,
+    //maxAge: 3600000, //in ms i.e 1 hr in this case
+    redirect: true,
+    setHeaders: function (res, path, stat) {
+      //any other header in response
+      res.set({
+          'x-timestamp': Date.now(),
+          'joseph' : 'hi',
+          'Cache-Control' : (path.includes('public')) ? 'no-store' : 'public, max-age=3600'
+        });
+    }
+}
+
+
+
+app.use(express.static('public',options));
+
 app.use('/js',express.static(__dirname+"../public/js"));
 app.use('/css',express.static(__dirname+"../public/css"));
-app.use('/images',express.static(__dirname+"../public/images"));
+app.use('/images',express.static(__dirname+"../public/images"))
+
+
+
 
  app.use(express.json());
 
